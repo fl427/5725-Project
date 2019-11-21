@@ -1,0 +1,3 @@
+#!/bin/bash
+echo "back">>./cmd
+done

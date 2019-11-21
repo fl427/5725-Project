@@ -17,3 +17,15 @@ app.use('/',router);
 router.get('/connect',function(req,res){
     res.json("server connected");
 })
+
+router.get('/echo',function(req,resp){
+    console.log("in echo")
+    const { spawn } = require('child_process')
+    const py=spawn('bash',['./pytest/echo'])
+    console.log('finish')
+    resp.json("done")
+})
+
+app.use('/move',require('./move/move'));
+app.use('/image',require('./image/image'));
+app.use('/audio',require('./audio/audio'));
