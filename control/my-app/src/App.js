@@ -24,6 +24,11 @@ function App() {
           <div class="Column"><button onClick={back}>Backward</button></div>
           <div class="Column" />
         </div>
+        <div class="Row">
+          <div class="Column" ><button onClick={setStart}>Set as Start</button></div>
+          <div class="Column"></div>
+          <div class="Column" ><button onClick={returnToStart}>Return</button></div>
+        </div>
       </header>
     </div>
   );
@@ -64,6 +69,20 @@ function stop() {
     .catch((err) => {
       alert("error:  " + err)
     });
+}
+
+function setStart(){
+  axios.get(moveUrl + "setStart").then()
+    .catch((err) => {
+      alert("error:  " + err)
+    });
+}
+
+function returnToStart(){
+  axios.get(moveUrl + "return").then()
+  .catch((err) => {
+    alert("error:  " + err)
+  }); 
 }
 
 export default App;

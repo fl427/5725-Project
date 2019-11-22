@@ -1,0 +1,5 @@
+#!/bin/bash
+node server.js &
+bash ./bashes/startCam &
+python ./move/move_control.py 
+done

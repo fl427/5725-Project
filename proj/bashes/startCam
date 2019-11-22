@@ -1,0 +1,3 @@
+#!/bin/bash
+raspivid -t 0 -w 1280 -h 720 -fps 20 -o - | nc -k -l 8090
+done

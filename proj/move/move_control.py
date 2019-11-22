@@ -40,11 +40,11 @@ def fwd1():  # left roll forward
 
 
 def back2():   # right roll backward
-    p2.ChangeDutyCycle(MID+(7.65-MID)/2)
+    p2.ChangeDutyCycle(MID+(7.65-MID)/2-0.15)
 
 
 def fwd2():   # right roll forward
-    p2.ChangeDutyCycle(MID-(MID-5.85)/2)
+    p2.ChangeDutyCycle(MID-(MID-5.85)/2+0.05)
 
 
 def stop2():    # right stop
@@ -83,11 +83,11 @@ def turnR():  # turn for 10 degree
 move_stack = []
 time_stack = []
 
-left_time=1
-right_time=1
-around_time=5
+left_time=0.17
+right_time=0.17
+around_time=1.65
 
-f = open("../cmd", "r")
+f = open("./cmd", "r")
 
 while not done:
     line = f.readline()
@@ -131,6 +131,9 @@ while not done:
                 pass
             stop()
             while len(move_stack) > 0:
+                last_time = time.time()
+                while time.time()-last_time < 0.8:
+                    pass
                 m = move_stack.pop()
                 if(m == "fwd"):
                     t = time_stack.pop()
@@ -158,7 +161,12 @@ while not done:
                     while time.time()-last_time<right_time:
                         pass
                     stop()
-
+            stop()
+            last_time = time.time()
+            turnR()  # turn 180
+            while time.time()-last_time < around_time+0.5:
+                pass
+            stop()
         elif line == "set\n":
             stop()
             move_stack = []
