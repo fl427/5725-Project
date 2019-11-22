@@ -32,11 +32,15 @@ router.get('/stop',function(req,res){
 })
 
 router.get('/setStart',function(req,res){
-
+    const { spawn } = require('child_process')
+    const py=spawn('bash',['./bashes/set'])
+    res.json("setStart")
 })
 
 router.get('/return',function(req,res){
-
+    const { spawn } = require('child_process')
+    const py=spawn('bash',['./bashes/return'])
+    res.json("return")
 })
 
 module.exports=router;
